@@ -13,12 +13,11 @@ ENV S3_PATH
 ENV REGION
 
 # ADD s3cfg /root/.s3cfg
-
-# ADD start.sh /start.sh
-# RUN chmod +x /start.sh
-
 # ADD sync.sh /sync.sh
 # RUN chmod +x /sync.sh
 
-# ENTRYPOINT ["/start.sh"]
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 # CMD [""]
