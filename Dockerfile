@@ -1,19 +1,23 @@
 FROM debian:jessie
-MAINTAINER Ilya Stepanov <dev@ilyastepanov.com>
+MAINTAINER Salim Ibrahim <salim.31@gmail.com>
 
 RUN apt-get update && \
-    apt-get install -y python python-pip cron && \
+    apt-get install -y python python-pip cron awscli && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install s3cmd
+RUN pip install awscli
 
-ADD s3cfg /root/.s3cfg
+ENV ACCESS_KEY
+ENV SECRET_KEY
+ENV S3_PATH
 
-ADD start.sh /start.sh
-RUN chmod +x /start.sh
+# ADD s3cfg /root/.s3cfg
 
-ADD sync.sh /sync.sh
-RUN chmod +x /sync.sh
+# ADD start.sh /start.sh
+# RUN chmod +x /start.sh
 
-ENTRYPOINT ["/start.sh"]
-CMD [""]
+# ADD sync.sh /sync.sh
+# RUN chmod +x /sync.sh
+
+# ENTRYPOINT ["/start.sh"]
+# CMD [""]
