@@ -10,6 +10,7 @@ RUN pip install awscli
 ENV ACCESS_KEY
 ENV SECRET_KEY
 ENV S3_PATH
+ENV REGION
 
 # ADD s3cfg /root/.s3cfg
 
