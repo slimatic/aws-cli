@@ -7,10 +7,18 @@ RUN apt-get update && \
 
 RUN pip install awscli
 
+# Prepare directory
+RUN mkdir -p /var/www
+RUN usermod -u 1000 www-data
+RUN usermod -a -G users www-data
+RUN chown -R www-data:www-data /var/www
+
+EXPOSE 80
+EXPOSE 443
+WORKDIR /var/www
+
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
-RUN mkdir -p /var/www
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD [""]
