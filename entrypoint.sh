@@ -15,6 +15,11 @@ aws configure set aws_access_key_id ${ACCESS_KEY}
 aws configure set aws_secret_access_key ${SECRET_KEY}
 aws configure set region ${REGION}
 
+env
+aws s3 ls
+ls /data
+aws s3 cp /data ${S3_PATH} --recursive
+
 # if [[ "$1" == 'no-cron' ]]; then
 #     exec /sync.sh
 # elif [[ "$1" == 'delete' ]]; then
