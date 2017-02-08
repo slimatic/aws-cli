@@ -1,4 +1,4 @@
-slimatic/aws-cli
+slimatic/aws-s3-sync
 ======================
 
 Docker container that periodically backups files to Amazon S3 using [s3cmd sync](http://s3tools.org/s3cmd-sync) and cron.
